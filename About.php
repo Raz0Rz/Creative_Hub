@@ -10,18 +10,18 @@
     <header>
         <div class="superheader">
             <div class="logobox">
-                <a href="index.html" class = "logo"></a>
+                <a href="index.php" class = "logo"></a>
             </div>
             <div class="navigation">
                 <ul>
                     <li>
-                        <a href="About.html" class="About">О нас</a>
+                        <a href="About.php" class="About">О нас</a>
                     </li>
                     <li>
-                        <a href="services.html" class="">Услуги</a>
+                        <a href="services.php" class="">Услуги</a>
                     </li>
                     <li>
-                        <a href="lk.html">Личный кабинет</a>
+                        <a href="lk.php">Личный кабинет</a>
                     </li>
                     <li>
                         <a href="" class="reg-btn">Регистрация</a>
@@ -66,11 +66,11 @@
     <div class="registration">
         <button class="close-btn">×</button>
         <h2>Регистрация</h2>
-        <form action="">
+        <form action="" method="POST">
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" placeholder="example@mail.ru">
 
-            <label for="email">Имя</label>
+            <label for="firstname">Имя</label>
             <input type="text" id="firstname" name="firstname" placeholder="Введите имя">
 
             <label for="lastname">Фамилия</label>
@@ -100,7 +100,7 @@
     <div class="enter">
         <button class="close-btn">×</button>
         <h2>Вход</h2>
-        <form action="">
+        <form action="" method="POST">
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" placeholder="example@mail.ru">
 

@@ -15,13 +15,13 @@
             <div class="navigation">
                 <ul>
                     <li>
-                        <a href="./About.html">О нас</a>
+                        <a href="About.php">О нас</a>
                     </li>
                     <li>
-                        <a href="services.html">Услуги</a>
+                        <a href="services.php">Услуги</a>
                     </li>
                     <li>
-                        <a href="lk.html">Личный кабинет</a>
+                        <a href="lk.php">Личный кабинет</a>
                     </li>
                     <li>
                         <a href="" class="reg-btn">Регистрация</a>
@@ -49,15 +49,15 @@
     <div class="registration">
         <button class="close-btn">×</button>
         <h2>Регистрация</h2>
-        <form action="">
+        <form action="" method="POST">
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" placeholder="example@mail.ru">
 
-            <label for="email">Имя</label>
+            <label for="firstname">Имя</label>
             <input type="text" id="firstname" name="firstname" placeholder="Введите имя">
 
             <label for="lastname">Фамилия</label>
-            <input type="taxt" id="lastname" name="lastname" placeholder="Введите фамилию">
+            <input type="text" id="lastname" name="lastname" placeholder="Введите фамилию">
 
             <label for="phone">Телефон</label>
             <input type="tel" id="phone" name="phone" placeholder="+7-978-777-77-77">
@@ -82,7 +82,7 @@
     <div class="enter">
         <button class="close-btn">×</button>
         <h2>Вход</h2>
-        <form action="">
+        <form action="" method="POST">
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" placeholder="example@mail.ru">
 
