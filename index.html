@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Стиль/style.css">
+</head>
+<body>
+    <header>
+        <div class="superheader">
+            <div class="logobox">
+                <a href="#txtglav" class = "logo"></a>
+            </div>
+            <div class="navigation">
+                <ul>
+                    <li>
+                        <a href="./About.html">О нас</a>
+                    </li>
+                    <li>
+                        <a href="services.html">Услуги</a>
+                    </li>
+                    <li>
+                        <a href="lk.html">Личный кабинет</a>
+                    </li>
+                    <li>
+                        <a href="" class="reg-btn">Регистрация</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="txtglav">
+            <div class="name">
+                <div class = "nametxt">
+                    <p>Creative Hub</p>
+                </div>
+                <div class="blackstar">
+                    <img src="./images/mini star.png" alt="">
+                </div>
+            </div>
+            <div class="slogan">
+                <p>Будущее творчества начинается здесь</p>
+            </div>
+        </div>
+    </main>
+    <div class="overlay"></div>
+    <div class="registration">
+        <button class="close-btn">×</button>
+        <h2>Регистрация</h2>
+        <form action="">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="example@mail.ru">
+
+            <label for="email">Имя</label>
+            <input type="text" id="firstname" name="firstname" placeholder="Введите имя">
+
+            <label for="lastname">Фамилия</label>
+            <input type="taxt" id="lastname" name="lastname" placeholder="Введите фамилию">
+
+            <label for="phone">Телефон</label>
+            <input type="tel" id="phone" name="phone" placeholder="+7-978-777-77-77">
+
+            <label for="password">Пароль</label>
+            <input type="password" id="password" name="password" placeholder="Введите пароль">
+            
+            <label for="password-repeat">Повтор пароля</label>
+            <input type="password" id="password-repeat" name="password-repeat" placeholder="Повторите пароль">
+
+            <div class="agreement">
+                <label for="agree">
+                <input type="checkbox" name="agree" id="agree">
+                Согласен на обработку персональных данных
+                </label>
+            </div>
+
+            <button type="submit" class="vxbut">Зарегистрироваться</button>
+            <a href="">Уже есть аккаунт? Войдите.</a>
+        </form>
+    </div>
+    <div class="enter">
+        <button class="close-btn">×</button>
+        <h2>Вход</h2>
+        <form action="">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="example@mail.ru">
+
+            <label for="password">Пароль</label>
+            <input type="password" id="password" name="password" placeholder="Введите пароль">
+
+            <button type="submit" class="vxbut">Войти</button>
+            <a href="">Еще нет аккаунта? Зарегистрируйтесь.</a>
+        </form>
+    </div>
+    
+    <script src="./Стиль/script.js"></script>
+</body>
+</html>
