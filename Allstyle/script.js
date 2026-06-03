@@ -1,7 +1,10 @@
-document.addEventListener('DOMContentLoaded', deistv);
-document.addEventListener('DOMContentLoaded', showphoto);
-document.addEventListener('DOMContentLoaded', adprice);
-document.addEventListener('DOMContentLoaded', visob);
+document.addEventListener('DOMContentLoaded', function() {
+    deistv();
+    showphoto();
+    adprice();
+    visob();
+    handleRegistration();
+});
 
 function visob(){
     const buttObiavl = document.querySelector('.butt-obiavl');
@@ -144,4 +147,97 @@ function adprice(){
             priceInput.value = '';
         }
     })
+}
+
+function handleRegistration() {
+    const regForm = document.querySelector('.registration form');
+    const regWindow = document.querySelector('.registration');
+    const overlay = document.querySelector('.overlay');
+
+    if (!regForm) return;
+    
+    regForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(regForm);
+        
+        // Блокируем кнопку на время отправки
+        const submitBtn = regForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Регистрация...';
+        submitBtn.disabled = true;
+        
+        // Удаляем старые ошибки
+        const oldError = document.querySelector('.reg-error-message');
+        if (oldError) oldError.remove();
+        
+        try {
+            const response = await fetch('./handlers/sign_in.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                // Успех - закрываем окно и редирект
+                regWindow.classList.remove('visible');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+                window.location.href = result.redirect;
+            } else {
+                // Показываем ошибки
+                showErrors(result.errors);
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+            showErrors(['Произошла ошибка при отправке']);
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+
+    function showErrors(errors) {
+        // Удаляем старые сообщения
+        const existingError = document.querySelector('.reg-error-message');
+        if (existingError) existingError.remove();
+        
+        // Создаём блок ошибок
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'reg-error-message';
+        errorDiv.style.cssText = `
+            background-color: #ffebee;
+            color: #c62828;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            border-left: 4px solid #c62828;
+        `;
+        
+        if (Array.isArray(errors)) {
+            errorDiv.innerHTML = '<ul style="margin: 0; padding-left: 20px;">' + 
+                errors.map(err => `<li>${escapeHtml(err)}</li>`).join('') + 
+                '</ul>';
+        } else {
+            errorDiv.textContent = errors;
+        }
+        
+        // Вставляем в начало формы
+        const regForm = document.querySelector('.registration form');
+        regForm.insertBefore(errorDiv, regForm.firstChild);
+        
+        // Авто-скрытие через 5 секунд
+        setTimeout(() => {
+            if (errorDiv.parentNode) errorDiv.remove();
+        }, 5000);
+    }
+
+    // Простая защита от XSS
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
 }
