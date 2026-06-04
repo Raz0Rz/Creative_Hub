@@ -4,6 +4,20 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
     exit();
 }
+
+require_once './includes/includesbd.php';
+
+$userId = $_SESSION['user_id'];
+$stmt = $pdo->prepare("SELECT firstname, created_at FROM users WHERE id = ?");
+$stmt->execute([$userId]);
+$user = $stmt->fetch();
+
+if (!$user) {
+    // Можно разлогинить или показать ошибку
+    session_destroy();
+    header('Location: index.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,8 +35,8 @@ if (!isset($_SESSION['user_id'])) {
     <main class="lk">
         <div class="plashka-prof">
             <h2>Профиль</h2>
-            <p><strong>Алексей Пономарев</strong></p>
-            <p>Вместе с нами с 10.05.2023</p>
+            <p id="nameuser"><strong><?= $user['firstname'] ?></strong></p>
+            <p id="dateauthor"><?= date('d.m.Y', strtotime($user['created_at'])) ?></p>
             
             <ul class="profile-menu">
                 <li class="prof-adverts">Мои объявления</li>

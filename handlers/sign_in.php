@@ -61,17 +61,20 @@ if ($password !== $passwordRepeat) {
     $errors[] = 'Пароли не совпадают';
 }
 
-if (!empty($errors)) {
-    echo json_encode(['success' => false, 'errors' => $errors]);
-    exit();
+if (empty($phone)){
+    $errors[] = 'Введите номер телефона';
+}
+else if (!preg_match('/^[\d\s\-\+\(\)]{7,}$/', $phone)) {
+    $errors[] = 'Введите корректный номер телефона';
 }
 
 if (empty($agree)) {
     $errors[] = 'Необходимо согласиться с условиями';
 }
 
-if (!empty($phone) && !preg_match('/^[\d\s\-\+\(\)]{7,}$/', $phone)) {
-    $errors[] = 'Введите корректный телефон';
+if (!empty($errors)) {
+    echo json_encode(['success' => false, 'errors' => $errors]);
+    exit();
 }
 
 try {
