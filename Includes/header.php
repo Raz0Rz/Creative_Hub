@@ -1,4 +1,8 @@
 <header>
+    <script>
+        // Определяем путь до папки сайта
+        const SITE_URL = '<?php echo "http://" . $_SERVER['HTTP_HOST'] . "/Creative_Hub/"; ?>';
+    </script>
         <div class="superheader">
             <div class="logobox">
                 <a href="index.php" class = "logo"></a>

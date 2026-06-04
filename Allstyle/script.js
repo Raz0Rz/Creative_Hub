@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     adprice();
     visob();
     handleRegistration();
+    handleLogic();
 });
 
 function visob(){
@@ -149,6 +150,44 @@ function adprice(){
     })
 }
 
+function showFormErrors(errors, formSelector, errorClassName) {
+    const form = document.querySelector(formSelector);
+    if (!form) return;
+
+    // Удаляем старые ошибки
+    const existingError = form.querySelector(`.${errorClassName}`);
+    if (existingError) existingError.remove();
+
+    // Создаём блок ошибок
+    const errorDiv = document.createElement('div');
+    errorDiv.className = errorClassName;
+    errorDiv.style.cssText = `
+        background-color: #ffebee;
+        color: #c62828;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        border-left: 4px solid #c62828;
+    `;
+
+    if (Array.isArray(errors)) {
+        errorDiv.innerHTML = '<ul style="margin: 0; padding-left: 20px;">' + 
+            errors.map(err => `<li>${escapeHtml(err)}</li>`).join('') + 
+            '</ul>';
+    } else {
+        errorDiv.textContent = errors;
+    }
+
+    // Вставляем в начало формы
+    form.insertBefore(errorDiv, form.firstChild);
+
+    // Авто-скрытие через 5 секунд
+    setTimeout(() => {
+        if (errorDiv.parentNode) errorDiv.remove();
+    }, 5000);
+}
+
 function handleRegistration() {
     const regForm = document.querySelector('.registration form');
     const regWindow = document.querySelector('.registration');
@@ -172,7 +211,7 @@ function handleRegistration() {
         if (oldError) oldError.remove();
         
         try {
-            const response = await fetch('./handlers/sign_in.php', {
+            const response = await fetch(SITE_URL + 'handlers/sign_in.php', {
                 method: 'POST',
                 body: formData
             });
@@ -187,57 +226,69 @@ function handleRegistration() {
                 window.location.href = result.redirect;
             } else {
                 // Показываем ошибки
-                showErrors(result.errors);
+                showFormErrors(result.errors, '.registration form', 'reg-error-message');
             }
         } catch (error) {
             console.error('Ошибка:', error);
-            showErrors(['Произошла ошибка при отправке']);
+            showFormErrors(['Произошла ошибка при отправке'], '.registration form', 'reg-error-message');
         } finally {
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
         }
     });
+}
 
-    function showErrors(errors) {
-        // Удаляем старые сообщения
-        const existingError = document.querySelector('.reg-error-message');
-        if (existingError) existingError.remove();
-        
-        // Создаём блок ошибок
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'reg-error-message';
-        errorDiv.style.cssText = `
-            background-color: #ffebee;
-            color: #c62828;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            font-size: 14px;
-            border-left: 4px solid #c62828;
-        `;
-        
-        if (Array.isArray(errors)) {
-            errorDiv.innerHTML = '<ul style="margin: 0; padding-left: 20px;">' + 
-                errors.map(err => `<li>${escapeHtml(err)}</li>`).join('') + 
-                '</ul>';
-        } else {
-            errorDiv.textContent = errors;
+function handleLogic(){
+    const overlay = document.querySelector('.overlay');
+    const entForm = document.querySelector('.enter form');
+    const entWindow = document.querySelector('.enter');
+
+    if(!entForm) return;
+
+    entForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(entForm);
+
+        const submitBtn = document.querySelector('.vxbut');
+        submitBtn.disabled = true;
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = "Вход...";
+
+        const oldError = document.querySelector('.login-error-message');
+        if (oldError) oldError.remove();
+
+        try {
+            const response = await fetch(SITE_URL + 'handlers/login.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                // Успех - закрываем окно и редирект
+                entWindow.classList.remove('visible');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+                window.location.href = result.redirect;
+            } else {
+                // Показываем ошибки
+                showFormErrors(result.errors, '.enter form', 'login-error-message');
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+            showFormErrors(['Введены неверные данные'], '.enter form', 'login-error-message');
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
         }
-        
-        // Вставляем в начало формы
-        const regForm = document.querySelector('.registration form');
-        regForm.insertBefore(errorDiv, regForm.firstChild);
-        
-        // Авто-скрытие через 5 секунд
-        setTimeout(() => {
-            if (errorDiv.parentNode) errorDiv.remove();
-        }, 5000);
-    }
+    });
+}
 
-    // Простая защита от XSS
-    function escapeHtml(str) {
+// Простая защита от XSS
+function escapeHtml(str) {
         const div = document.createElement('div');
         div.textContent = str;
         return div.innerHTML;
     }
-}
