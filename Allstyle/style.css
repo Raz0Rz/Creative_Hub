@@ -21,10 +21,11 @@ body, .bodyAbout{
         #ffffff 100%
     );
     margin: 0;
-    min-height: 100vh; 
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    background-attachment: fixed;
 }
 
 .bodyAbout{
@@ -33,6 +34,7 @@ body, .bodyAbout{
         #ae6bd1 20%,
         #ffffff 100%
     );
+    background-attachment: fixed;
 }
 
 footer{
@@ -368,8 +370,9 @@ a{
 .plushki {
     display: flex;
     justify-content: center;
-    gap: 250px;
-    padding: 40px;
+    gap: 150px;
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
 .plushka {
@@ -397,8 +400,8 @@ a{
 }
 
 .pic {
-    width: 200px;
-    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
     margin-bottom: 20px;
     transition: transform 0.4s ease;
 }
@@ -835,6 +838,7 @@ a{
     }
     .superheader{
         padding: 15px;
+        padding-bottom: 0;
     }
     .slogan p {
         font-size: 30px;
@@ -856,6 +860,45 @@ a{
         font-size: 20px;
         white-space: nowrap;
     }
+
+    /* footer */
+
+    .footer{
+        margin-top: 20px;
+    }
+    .txtf{
+        font-size: 20px;
+    }
+    .imgfoot{
+        width: 35px;
+        height: 35px;
+        object-fit: contain;
+    }
+
+    /* о нас */
+
+    .about-slogan h2{
+        margin: 0;
+        font-size: 35px;
+    }
+    .about-slogan{
+        padding-top: 0;
+        padding-bottom: 0;
+        min-height: 160px;
+
+    }
+    .plushki{
+        min-height: 180px;
+    }
+    .pic{
+        width: 150px;
+        height: 150px;
+    }
+    .plushka p{
+        font-size: 18px;
+        margin: 0;
+    }
+
 }
 
 /* ЕДИНЫЙ МЕДИА-ЗАПРОС ДЛЯ ТЕЛЕФОНОВ И ЭКСТРЕМАЛЬНОГО СЖАТИЯ */
@@ -924,9 +967,71 @@ a{
     .txtglav img, .txtglav svg {
         display: none;
     }
+
+    /* footer */
+    .footer{
+        margin-bottom: 10px;
+    }
+    .footinf{
+        justify-content: center;
+        gap: 20px;
+    }
+    .footinf li a{
+        display: flex;
+        flex-direction: row;
+        gap: 0;
+    }
+    .footinf li a span{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    .txtf{
+        font-size: 12px;
+    }
+    .imgfoot{
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+    }
+
+    /* о нас */
+    .about-slogan{
+        min-height: 100px;
+        max-width: 300px;
+    }
+
+    .about-slogan h2{
+        margin: 0;
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .plushki{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding-top: 0;
+    }
+
+    .plushka{
+        max-width: 30%;
+        max-height: 30%;
+    }
+
+    .pic{
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    .plushka p{
+        font-size: 15px;
+        margin: 0;
+    }
 }
 
-/* ДОБАВКА ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ (зум 400% и старые телефоны) */
+/* ДОБАВКА ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ (зум 500% и старые телефоны) */
 @media (max-width: 450px) {
     .logo {
         width: 35px;
@@ -945,4 +1050,17 @@ a{
     .slogan p {
         font-size: 14px;
     }
+
+    /* foot */
+    .txtf{
+        font-size: 10px;
+    }
+    
+    /* о нас*/
+    .imgfoot{
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+    }
+
 }

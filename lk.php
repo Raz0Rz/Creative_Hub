@@ -91,8 +91,8 @@ if (!$user) {
 
     </main>
     
-    <?php include 'includes/footer.php'; ?>
     <?php include 'includes/log_sign.php'; ?>
+    <?php include 'includes/footer.php'; ?>
     
     <script src="./Allstyle/script.js"></script>
 
