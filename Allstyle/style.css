@@ -1018,13 +1018,22 @@ a{
     }
 
     .pic{
-        max-width: 200px;
-        max-height: 200px;
+        max-width: 100px;
+        max-height: 100px;
     }
 
     .plushka p{
         font-size: 15px;
         margin: 0;
+    }
+
+    .registration{
+        height: auto;
+        width: 80%;
+    }
+    .enter{
+        height: auto;
+        width: 80%;
     }
 }
 
