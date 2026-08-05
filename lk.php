@@ -34,10 +34,11 @@ if (!$user) {
 
     <main class="lk">
         <div class="plashka-prof">
-            <h2>Профиль</h2>
-            <p id="nameuser"><strong><?= $user['firstname'] ?></strong></p>
-            <p id="dateauthor"><?= date('d.m.Y', strtotime($user['created_at'])) ?></p>
-            
+            <div>
+                <h2>Профиль</h2>
+                <p id="nameuser"><?= $user['firstname'] ?></p>
+                <p id="dateauthor"><?= date('d.m.Y', strtotime($user['created_at'])) ?></p>
+            </div>
             <ul class="profile-menu">
                 <li class="prof-adverts">Мои объявления</li>
                 <li class="prof-reviews">Мои отзывы</li>

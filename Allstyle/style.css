@@ -306,11 +306,15 @@ a{
 .foot, .footercontacts, .footerabout{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 100%;
 }
 .footer, .footinf{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     margin-top: auto;
 }
 .footercontacts{
@@ -327,11 +331,17 @@ a{
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     list-style: none;
     padding: 0;
     margin: 0;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.footinf li {
+    margin: 0;
+    padding: 0;
 }
 
 .txtf{
@@ -352,7 +362,6 @@ a{
 .Contacts{
     color: #61128c;
 }
-
 
 /* about html*/
 
@@ -448,20 +457,23 @@ a{
 .lk {
     display: flex;
     flex-direction: row;
-    padding: 40px 60px;
     gap: 40px;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 50px auto;
     box-sizing: border-box;
 }
 
 /* Левая панель профиля */
 .plashka-prof {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
     background-color: white;
     border-radius: 25px;
     padding: 30px;
     width: 320px;
     height: fit-content;
+    gap: 10px;
 }
 
 .plashka-prof h2 {
@@ -469,37 +481,34 @@ a{
     color: #68268B;
     margin-top: 0;
     margin-bottom: 25px;
-    margin-bottom: 25px;
     padding-bottom: 15px;
     border-bottom: 2px solid #E0E0E0;
 }
 
 .plashka-prof p {
-    font-size: 18px;
+    font-size: 22px;
     margin: 12px 0;
     color: #333;
-}
-
-.plashka-prof p strong {
-    font-size: 22px;
-    color: #000;
+    font-weight: bold;
 }
 
 /* Меню профиля */
 .profile-menu {
+    display: flex;
+    flex-direction: column;
     list-style: none;
     padding: 0;
-    margin-top: 40px;
+    margin: 0;
+    gap: 10px;
 }
 
 .profile-menu li {
-    padding: 18px 20px;
     font-size: 20px;
     color: #68268B;
     cursor: pointer;
     border-radius: 12px;
-    margin-bottom: 10px;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    font-weight: bold;
 }
 
 .profile-menu li:hover {
@@ -979,7 +988,7 @@ a{
         align-items: center;
     }
     .navigation ul li a {
-        font-size: 14px;
+        font-size: 10px;
         white-space: nowrap;
     }
 
@@ -1013,8 +1022,9 @@ a{
         margin-bottom: 10px;
     }
     .footinf{
-        justify-content: center;
-        gap: 20px;
+        padding-left: 20px;
+        padding-right: 40px;
+
     }
     .footinf li a{
         display: flex;
@@ -1176,19 +1186,62 @@ a{
     .buttAdd{
         margin-bottom: 10px;
     }
+
+    /* lk */
+
+    .lk{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+    }
+    .plashka-prof {
+        display: flex;
+        flex-direction: row;
+        padding: 30px;
+        width: 250px;
+        height: auto;
+        gap: 30px;
+    }
+    .plashka-prof div h2{
+        font-size: 20px;
+    }
+    .plashka-prof div p{
+        font-size: 18px;
+    }
+    .profile-menu li{
+        font-size: 15px;
+    }
+    .profile-menu{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 22px;
+    }
+    .event-status{
+        padding-left: 0;
+    }
+    .all-events{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .events{
+        width: 60%;
+    }
 }
 
 /* ДОБАВКА ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ (зум 500% и старые телефоны) */
 @media (max-width: 450px) {
     .logo {
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 30px;
     }
     .navigation ul {
         gap: 8px;
     }
     .navigation ul li a {
-        font-size: 10px;
+        font-size: 11px;
     }
     .nametxt {
         font-size: 28px;
@@ -1200,7 +1253,7 @@ a{
 
     /* foot */
     .txtf{
-        font-size: 10px;
+        font-size: 11px;
     }
     
     /* о нас*/
