@@ -39,8 +39,8 @@
         </section>
 
     </main>
-    <?php include(__DIR__ . '/includes/header.php'); ?>
-    <?php include(__DIR__ . '/includes/header.php'); ?>
+    <?php include(__DIR__ . '/includes/log_sign.php'); ?>
+    <?php include(__DIR__ . '/includes/footer.php'); ?> 
 
     <script src="./Allstyle/script.js"></script>
 
