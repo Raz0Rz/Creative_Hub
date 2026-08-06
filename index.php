@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./Allstyle/style.css">
 </head>
 <body>
-    <?php include 'includes/header.php'; ?>
+    <?php include(__DIR__ . '/includes/header.php'); ?>
     
     <main>
         <div class="txtglav">
@@ -25,8 +25,8 @@
         </div>
     </main>
 
-    <?php include 'includes/log_sign.php'; ?>
-    <?php include 'includes/footer.php'; ?> 
+    <?php include(__DIR__ . '/includes/header.php'); ?>
+    <?php include(__DIR__ . '/includes/header.php'); ?> 
     
     <script src="./Allstyle/script.js"></script>
 </body>

@@ -30,7 +30,7 @@ if (!$user) {
 </head>
 <body class="bodylkab">
 
-    <?php include 'includes/header.php'; ?>
+    <?php include(__DIR__ . '/includes/header.php'); ?>
 
     <main class="lk">
         <div class="plashka-prof">
@@ -92,8 +92,8 @@ if (!$user) {
 
     </main>
     
-    <?php include 'includes/log_sign.php'; ?>
-    <?php include 'includes/footer.php'; ?>
+    <?php include(__DIR__ . '/includes/header.php'); ?>
+    <?php include(__DIR__ . '/includes/header.php'); ?>
     
     <script src="./Allstyle/script.js"></script>
 

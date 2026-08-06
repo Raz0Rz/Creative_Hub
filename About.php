@@ -8,7 +8,7 @@
 </head>
 <body class="bodyAbout">
 
-    <?php include 'includes/header.php'; ?>
+    <?php include(__DIR__ . '/includes/header.php'); ?>
 
     <main>
         <div class="about-slogan">
@@ -39,8 +39,8 @@
         </section>
 
     </main>
-    <?php include 'includes/log_sign.php'; ?>
-    <?php include 'includes/footer.php'; ?>
+    <?php include(__DIR__ . '/includes/header.php'); ?>
+    <?php include(__DIR__ . '/includes/header.php'); ?>
 
     <script src="./Allstyle/script.js"></script>
 
