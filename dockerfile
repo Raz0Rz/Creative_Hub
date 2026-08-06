@@ -1,6 +1,14 @@
 FROM php:8.2-apache
 
-# Копируем ВСЕ файлы и папки из вашего репозитория внутрь сервера
+# Устанавливаем драйвер PostgreSQL
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql
+
+# Включаем mod_rewrite для Apache (для .htaccess)
+RUN a2enmod rewrite
+
+# Копируем проект
 COPY . /var/www/html/
 
 # Меняем порт на 10000 для Render
