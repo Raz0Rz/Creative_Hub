@@ -26,7 +26,7 @@
     </main>
 
     <?php require_once __DIR__ . '/includes/log_sign.php'; ?>
-    <?php require_once__DIR__ . '/includes/footer.php'; ?> 
+    <?php require_once __DIR__ . '/includes/footer.php'; ?> 
     
     <script src="./Allstyle/script.js"></script>
 </body>
