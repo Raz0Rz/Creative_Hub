@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const SITE_URL = ''; 
+    const SITE_URL = window.location.origin + '/';
     deistv();
     showphoto();
     adprice();
